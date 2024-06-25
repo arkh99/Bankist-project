@@ -95,11 +95,27 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurtousd = 1.1;
 const newarr = movements.map(el => el * eurtousd)
 
-console.log(newarr);
+// console.log(newarr);
 
 const movementsdesc = movements.map((value, index, arr) => {
   const type = value > 0 ? "deposited" : "withdrew"
   return `Movement ${index+1}: You ${type} ${Math.abs(value)}`
 })
 
-console.log(movementsdesc);
+// console.log(movementsdesc);
+
+// function for creating users initials
+// const inimaker = function (user) {
+//   let username = "";
+//   username += user.split(" ").map(el => el[0])
+//   console.log(username.replaceAll(",", "").toUpperCase());
+// }
+const initials = []
+const inimaker = function (users) {
+  users.forEach(function (user) {
+    user.username = (user.owner.toLowerCase().split(" ").map(el => el[0]).join(""));
+  })
+}
+inimaker(accounts)
+console.log(accounts);
+
