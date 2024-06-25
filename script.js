@@ -91,3 +91,15 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+const eurtousd = 1.1;
+const newarr = movements.map(el => el * eurtousd)
+
+console.log(newarr);
+
+const movementsdesc = movements.map((value, index, arr) => {
+  const type = value > 0 ? "deposited" : "withdrew"
+  return `Movement ${index+1}: You ${type} ${Math.abs(value)}`
+})
+
+console.log(movementsdesc);
