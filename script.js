@@ -142,3 +142,6 @@ const max = movements.reduce((acc, value) => {
   else return value
 }, movements[0])
 // console.log(max);
+
+const totaldepusd = account2.movements.filter(value => value > 0).map(value => value * eurtousd).reduce((acc, value) => acc + value, 0);
+console.log(totaldepusd);
