@@ -110,6 +110,16 @@ const movementsdesc = movements.map((value, index, arr) => {
 //   username += user.split(" ").map(el => el[0])
 //   console.log(username.replaceAll(",", "").toUpperCase());
 // }
+
+// ********************************** deposites and withdrawals ***********************************************
+
+
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+})
+const withdrawals = movements.filter(mov => mov < 0);
+// ************************************************************************************************************
+
 const initials = []
 const inimaker = function (users) {
   users.forEach(function (user) {
@@ -120,16 +130,25 @@ inimaker(accounts)
 
 const calcdisplaybalance = function (movements) {
   const balance = movements.reduce((sum, value) => sum + value, 0)
-  labelBalance.textContent = `${balance} €`;
+  labelBalance.textContent = `${balance}€`;
 }
-calcdisplaybalance(account2.movements)
+calcdisplaybalance(account1.movements)
+
+const calcdisplaysummery = function (movements) {
+  const incomes = movements.filter(value => value > 0).reduce((acc, value) => acc + value, 0);
+  const spends = Math.abs(movements.filter(value => value < 0).reduce((acc, value) => acc + value, 0))
+  labelSumIn.textContent = `${incomes} €`;
+  labelSumOut.textContent = `${spends} €`;
+  const interestrate = 1.2 / 100
+  const totalinterest = deposits.map(value => value * interestrate).filter(value => value >= 1).reduce((acc, value) => acc + value, 0);
+  labelSumInterest.textContent = totalinterest;
+  console.log(incomes);
+  console.log(spends);
+} 
+
+calcdisplaysummery(account1.movements)
 
 
-
-const deposits = movements.filter(function (mov) {
-  return mov > 0;
-})
-const withdrawals = movements.filter(mov => mov < 0);
 
 // const balance = movements.reduce(function (acc, value) {
 //   return acc + value
@@ -144,4 +163,4 @@ const max = movements.reduce((acc, value) => {
 // console.log(max);
 
 const totaldepusd = account2.movements.filter(value => value > 0).map(value => value * eurtousd).reduce((acc, value) => acc + value, 0);
-console.log(totaldepusd);
+// console.log(totaldepusd);
