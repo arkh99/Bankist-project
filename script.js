@@ -117,11 +117,28 @@ const inimaker = function (users) {
   })
 }
 inimaker(accounts)
-// console.log(accounts);
+
+const calcdisplaybalance = function (movements) {
+  const balance = movements.reduce((sum, value) => sum + value, 0)
+  labelBalance.textContent = `${balance} €`;
+}
+calcdisplaybalance(account2.movements)
+
+
 
 const deposits = movements.filter(function (mov) {
   return mov > 0;
 })
 const withdrawals = movements.filter(mov => mov < 0);
 
+// const balance = movements.reduce(function (acc, value) {
+//   return acc + value
+// }, 0)
 
+
+// using reduce for max
+const max = movements.reduce((acc, value) => {
+  if (acc > value) return acc; 
+  else return value
+}, movements[0])
+// console.log(max);
