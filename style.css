@@ -83,6 +83,17 @@ nav {
   color: #777;
 }
 
+/* main welcome  */
+.main-welcome {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-right: 75px;
+  justify-content: center;
+  align-items: center;
+  opacity: 100;
+}
+
 /* MAIN */
 .app {
   position: relative;
@@ -94,7 +105,7 @@ nav {
   gap: 2rem;
 
   /* NOTE This creates the fade in/out anumation */
-  /* opacity: 0; */
+  opacity: 0;
   transition: all 1s;
 }
 

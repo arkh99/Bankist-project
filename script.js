@@ -61,6 +61,8 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const mainWelcome = document.querySelector(".main-welcome")
+
 const displayMovments = function (movements) {
   containerMovements.innerHTML = ""
   
@@ -77,7 +79,36 @@ const displayMovments = function (movements) {
 
   })
 }
-displayMovments(account1.movements)
+
+// event handler
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // display UI and show welcome message
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(" ")[0]}`
+    mainWelcome.style.opacity = 0;
+    containerApp.style.opacity = 100;
+
+    // clear input fields
+    inputLoginUsername.value = "";
+    inputLoginPin.value = "";
+
+    // losing focus on pin field after login
+    inputLoginPin.blur();
+    
+    displayMovments(currentAccount.movements)
+    calcdisplaybalance(currentAccount.movements)
+    calcdisplaysummery(currentAccount)
+
+  }
+  
+})
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -132,21 +163,18 @@ const calcdisplaybalance = function (movements) {
   const balance = movements.reduce((sum, value) => sum + value, 0)
   labelBalance.textContent = `${balance}€`;
 }
-calcdisplaybalance(account1.movements)
 
-const calcdisplaysummery = function (movements) {
-  const incomes = movements.filter(value => value > 0).reduce((acc, value) => acc + value, 0);
-  const spends = Math.abs(movements.filter(value => value < 0).reduce((acc, value) => acc + value, 0))
+const calcdisplaysummery = function (acc) {
+  const incomes = acc.movements.filter(value => value > 0).reduce((acc, value) => acc + value, 0);
+  const spends = Math.abs(acc.movements.filter(value => value < 0).reduce((acc, value) => acc + value, 0))
   labelSumIn.textContent = `${incomes} €`;
   labelSumOut.textContent = `${spends} €`;
-  const interestrate = 1.2 / 100
-  const totalinterest = deposits.map(value => value * interestrate).filter(value => value >= 1).reduce((acc, value) => acc + value, 0);
+  const totalinterest = deposits.map(value => (value * acc.interestRate) / 100 ).filter(value => value >= 1).reduce((acc, value) => acc + value, 0);
   labelSumInterest.textContent = totalinterest;
-  console.log(incomes);
-  console.log(spends);
+  console.log(acc.interestRate);
 } 
 
-calcdisplaysummery(account1.movements)
+
 
 
 
@@ -164,3 +192,16 @@ const max = movements.reduce((acc, value) => {
 
 const totaldepusd = account2.movements.filter(value => value > 0).map(value => value * eurtousd).reduce((acc, value) => acc + value, 0);
 // console.log(totaldepusd);
+
+// const firstwithdrawal = movements.find(value => value < 0);
+// console.log(movements);
+// console.log(firstwithdrawal);
+
+// const account = accounts.find(acc => acc.owner === "Sarah Smith");
+// console.log(account);
+
+// for (const i of accounts) {
+//   if (i.owner === "Sarah Smith") {
+//     console.log(i);
+//   }
+// }
