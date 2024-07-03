@@ -308,7 +308,9 @@ h2 {
 }
 
 @media (max-width: 800px) {
-
+  body {
+    max-width: 800px;
+  }
   nav {
     flex-direction: column;
     align-items: center;
@@ -339,7 +341,6 @@ h2 {
   }
 
   .main-welcome {
-    /* Remove right margin for all screens */
     margin-right: 0;
   }
 }
@@ -349,7 +350,7 @@ h2 {
   .app {
     grid-template-columns: 1fr; /* Single column layout */
     gap: 1rem; /* Adjust gap for smaller screens */
-    margin: 2rem auto; /* Adjust margin */
+    margin: 2rem auto; /* Adjust margin (auto for horizontal centering) */
     padding: 1rem; /* Adjust padding */
   }
 
