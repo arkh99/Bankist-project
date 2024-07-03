@@ -306,3 +306,67 @@ h2 {
 .timer {
   font-weight: 600;
 }
+
+@media (max-width: 800px) {
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .logo {
+    height: 4rem; /* Adjust logo size */
+    margin-bottom: 1rem; /* Space below the logo */
+  }
+
+  .welcome {
+    font-size: 1.5rem; /* Adjust welcome text size */
+    text-align: center; /* Center align text */
+    margin-bottom: 1rem; /* Space below welcome text */
+  }
+
+  .login {
+    flex-direction: column; /* Stack inputs vertically */
+    align-items: center; /* Center align inputs */
+  }
+
+  .login__input {
+    font-size: 1.8rem; /* Adjust input text size */
+    padding: 0.8rem 2rem; /* Adjust input padding */
+    width: auto; /* Auto width for smaller screens */
+    margin: 0.5rem 0; /* Adjust margin between inputs */
+  }
+
+  .main-welcome {
+    /* Remove right margin for all screens */
+    margin-right: 0;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .app {
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 1rem; /* Adjust gap for smaller screens */
+    margin: 2rem auto; /* Adjust margin */
+    padding: 1rem; /* Adjust padding */
+  }
+
+  .balance {
+    grid-column: 1; /* Span full width */
+    margin-bottom: 1rem; /* Adjust margin */
+  }
+
+  .movements {
+    grid-row: 2; /* Start from row 2 */
+  }
+
+  .operation {
+    padding: 2rem; /* Adjust padding */
+  }
+
+  .summary {
+    grid-row: 6; /* Start from row 5 (after operations) */
+  }
+}
