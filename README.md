@@ -30,6 +30,14 @@ Event handling to respond to user interactions, such as logging in, transferring
 Dynamic DOM manipulation to update the user interface in real-time based on user actions and account data.
 This project not only highlights core banking functionalities but also demonstrates advanced programming skills in creating a user-friendly and efficient web application.
 
+You can use the these login and passwords provided to experience the functionality of different features of the website :
+-----------------------------------------
+Account 1 Login: js ---- Pin: 1111
+Account 2 Login: jd ---- Pin: 2222
+Account 3 Login: stw ---- Pin: 3333
+Account 4 Login: ss ---- Pin: 4444
+-----------------------------------------
+
 Demo: 
 ![Screenshot 2024-07-03 190126](https://github.com/arkh99/Bankist-project/assets/124736009/bd01a43f-0ada-462c-9f44-0b12776b13f9)
 
