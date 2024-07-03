@@ -63,6 +63,12 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 const mainWelcome = document.querySelector(".main-welcome")
 
+const updateUI = function (currentAccount) {
+  displayMovments(currentAccount.movements)
+  calcdisplaybalance(currentAccount)
+  calcdisplaysummery(currentAccount)
+}
+
 const displayMovments = function (movements) {
   containerMovements.innerHTML = ""
   
@@ -100,15 +106,22 @@ btnLogin.addEventListener('click', function (e) {
     // losing focus on pin field after login
     inputLoginPin.blur();
     
-    displayMovments(currentAccount.movements)
-    calcdisplaybalance(currentAccount.movements)
-    calcdisplaysummery(currentAccount)
-
+    updateUI(currentAccount)
   }
   
 })
 
-
+btnTransfer.addEventListener("click", function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+  inputTransferAmount.value = inputTransferTo.value = ""
+  if (amount > 0 && receiverAcc && amount <= currentAccount.balance && receiverAcc.username !== currentAccount.username) {
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+    updateUI(currentAccount)
+  }
+})
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -159,9 +172,9 @@ const inimaker = function (users) {
 }
 inimaker(accounts)
 
-const calcdisplaybalance = function (movements) {
-  const balance = movements.reduce((sum, value) => sum + value, 0)
-  labelBalance.textContent = `${balance}€`;
+const calcdisplaybalance = function (acc) {
+  acc.balance = acc.movements.reduce((sum, value) => sum + value, 0);
+  labelBalance.textContent = `${acc.balance}€`;
 }
 
 const calcdisplaysummery = function (acc) {
@@ -171,7 +184,6 @@ const calcdisplaysummery = function (acc) {
   labelSumOut.textContent = `${spends} €`;
   const totalinterest = deposits.map(value => (value * acc.interestRate) / 100 ).filter(value => value >= 1).reduce((acc, value) => acc + value, 0);
   labelSumInterest.textContent = totalinterest;
-  console.log(acc.interestRate);
 } 
 
 
