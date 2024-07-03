@@ -69,10 +69,10 @@ const updateUI = function (currentAccount) {
   calcdisplaysummery(currentAccount)
 }
 
-const displayMovments = function (movements) {
+const displayMovments = function (movements, sort = false) {
   containerMovements.innerHTML = ""
-  
-  movements.forEach(function (mov, index) {
+  const movs = sort ? movements.slice().sort((a,b) => a - b) : movements
+  movs.forEach(function (mov, index) {
     const type = mov > 0 ? "deposit" : "withdrawal";
     const html = `
     <div class="movements__row">
@@ -145,6 +145,13 @@ btnClose.addEventListener("click", function (e) {
     containerApp.style.opacity = 0;
   }
   inputCloseUsername.value = inputClosePin.value = ""
+})
+
+let sorted = false;
+btnSort.addEventListener("click", function (e) {
+  e.preventDefault();
+  displayMovments(currentAccount.movements, !sorted);
+  sorted = !sorted;
 })
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -241,3 +248,26 @@ const totaldepusd = account2.movements.filter(value => value > 0).map(value => v
 //     console.log(i);
 //   }
 // }
+
+const accountsMovements = accounts.map(acc => acc.movements);
+const allMovements = accountsMovements.flat();
+const totalmovements = allMovements.reduce((acc, value) => acc + value, 0)
+// console.log(totalmovements);
+
+// sorting numbers in acs order
+// acsending
+// movements.sort((a, b) => {
+//   if (a > b) return 1
+//   if (b > a) return -1
+// })
+
+movements.sort((a, b) => a - b);
+
+//decsending
+// movements.sort((a, b) => {
+//   if (a > b) return -1
+//   if (b > a) return 1
+// })
+movements.sort((a, b), b - a);
+
+// console.log(movements);
