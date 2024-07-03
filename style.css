@@ -347,6 +347,10 @@ h2 {
 
 
 @media (max-width: 800px) {
+  .parent-container {
+    display: flex;
+    justify-content: center;
+  }
   .app {
     grid-template-columns: 1fr; /* Single column layout */
     gap: 1rem; /* Adjust gap for smaller screens */
