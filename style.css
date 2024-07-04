@@ -314,30 +314,30 @@ h2 {
   nav {
     flex-direction: column;
     align-items: center;
-    padding: 1rem; /* Adjust padding for smaller screens */
+    padding: 1rem;
   }
 
   .logo {
-    height: 4rem; /* Adjust logo size */
-    margin-bottom: 1rem; /* Space below the logo */
+    height: 4rem; 
+    margin-bottom: 1rem;
   }
 
   .welcome {
-    font-size: 1.5rem; /* Adjust welcome text size */
-    text-align: center; /* Center align text */
-    margin-bottom: 1rem; /* Space below welcome text */
+    font-size: 1.5rem; 
+    text-align: center; 
+    margin-bottom: 1rem; 
   }
 
   .login {
-    flex-direction: column; /* Stack inputs vertically */
-    align-items: center; /* Center align inputs */
+    flex-direction: column; 
+    align-items: center; 
   }
 
   .login__input {
-    font-size: 1.8rem; /* Adjust input text size */
-    padding: 0.8rem 2rem; /* Adjust input padding */
-    width: auto; /* Auto width for smaller screens */
-    margin: 0.5rem 0; /* Adjust margin between inputs */
+    font-size: 1.8rem; 
+    padding: 0.8rem 2rem; 
+    width: auto; 
+    margin: 0.5rem 0; 
   }
 
   .main-welcome {
@@ -352,26 +352,26 @@ h2 {
     justify-content: center;
   }
   .app {
-    grid-template-columns: 1fr; /* Single column layout */
-    gap: 1rem; /* Adjust gap for smaller screens */
-    margin: 2rem auto; /* Adjust margin (auto for horizontal centering) */
-    padding: 1rem; /* Adjust padding */
+    grid-template-columns: 1fr; 
+    gap: 1rem;
+    margin: 2rem auto; 
+    padding: 1rem; 
   }
 
   .balance {
-    grid-column: 1; /* Span full width */
-    margin-bottom: 1rem; /* Adjust margin */
+    grid-column: 1; 
+    margin-bottom: 1rem;
   }
 
   .movements {
-    grid-row: 2; /* Start from row 2 */
+    grid-row: 2; 
   }
 
   .operation {
-    padding: 2rem; /* Adjust padding */
+    padding: 2rem; 
   }
 
   .summary {
-    grid-row: 6; /* Start from row 5 (after operations) */
+    grid-row: 6; 
   }
 }

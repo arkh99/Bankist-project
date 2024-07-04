@@ -91,7 +91,7 @@ let currentAccount;
 
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
-  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+  currentAccount = accounts.find(acc => acc.username === (inputLoginUsername.value).toLowerCase());
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // display UI and show welcome message
@@ -114,7 +114,7 @@ btnLogin.addEventListener('click', function (e) {
 btnTransfer.addEventListener("click", function (e) {
   e.preventDefault();
   const amount = Number(inputTransferAmount.value);
-  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value.toLowerCase());
   inputTransferAmount.value = inputTransferTo.value = ""
   if (amount > 0 && receiverAcc && amount <= currentAccount.balance && receiverAcc.username !== currentAccount.username) {
     currentAccount.movements.push(-amount);
@@ -138,7 +138,7 @@ btnLoan.addEventListener("click", function (e) {
 
 btnClose.addEventListener("click", function (e) {
   e.preventDefault();
-  if (inputCloseUsername.value === currentAccount.username && Number(inputClosePin.value) === currentAccount.pin) {
+  if (inputCloseUsername.value.toLowerCase() === currentAccount.username && Number(inputClosePin.value) === currentAccount.pin) {
     const index = accounts.findIndex(acc => acc.username === currentAccount.username)
     accounts.splice(index, 1);
     mainWelcome.style.opacity = 100;
@@ -261,13 +261,13 @@ const totalmovements = allMovements.reduce((acc, value) => acc + value, 0)
 //   if (b > a) return -1
 // })
 
-movements.sort((a, b) => a - b);
+// movements.sort((a, b) => a - b);
 
-//decsending
-// movements.sort((a, b) => {
-//   if (a > b) return -1
-//   if (b > a) return 1
-// })
-movements.sort((a, b), b - a);
+// //decsending
+// // movements.sort((a, b) => {
+// //   if (a > b) return -1
+// //   if (b > a) return 1
+// // })
+// movements.sort((a, b), b - a);
 
-// console.log(movements);
+// // console.log(movements);
