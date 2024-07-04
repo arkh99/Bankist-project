@@ -32,13 +32,13 @@ This project not only highlights core banking functionalities but also demonstra
 
 You can use the these login and passwords provided to experience the functionality of different features of the website :
 -----------------------------------------
-Account 1 Login: js ---- Pin: 1111
+Account 1 Login: js      Pin: 1111
 
-Account 2 Login: jd ---- Pin: 2222
+Account 2 Login: jd      Pin: 2222
 
-Account 3 Login: stw ---- Pin: 3333
+Account 3 Login: stw      Pin: 3333
 
-Account 4 Login: ss ---- Pin: 4444 
+Account 4 Login: ss       Pin: 4444 
 
 -----------------------------------------
 
