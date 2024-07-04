@@ -271,3 +271,9 @@ const totalmovements = allMovements.reduce((acc, value) => acc + value, 0)
 // movements.sort((a, b), b - a);
 
 // // console.log(movements);
+
+
+
+labelBalance.addEventListener("click", function () {
+  const movementsUI = Array.from(document.querySelectorAll(".movements__value"), el => Number(el.textContent.replace("€", "")))
+})
