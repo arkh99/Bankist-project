@@ -1,3 +1,5 @@
+
+
 Bankist Frontend Project
 Overview
 Bankist is a minimalist banking web application that allows users to manage their accounts efficiently. The application includes features such as user login, money transfer between accounts, loan requests based on previous deposits, and account removal. This project showcases a simple and intuitive user interface, enhancing the user experience in handling financial transactions.
