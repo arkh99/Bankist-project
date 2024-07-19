@@ -179,7 +179,7 @@ btnTransfer.addEventListener("click", function (e) {
 
 btnLoan.addEventListener("click", function (e) {
   e.preventDefault();
-  const amount = Number(inputLoanAmount.value)
+  const amount = Math.floor(inputLoanAmount.value)
   const eligible = currentAccount.movements.some(value => value > 0 && value >= (amount * 0.1));
   if (eligible) {
     console.log("eligible");
@@ -339,4 +339,27 @@ labelBalance.addEventListener("click", function () {
 
 // math operations
 
-console.log(Math.sqrt(37));
+
+// console.log(Math.floor(Math.random() * 6) + 1);
+
+// generate random integres function
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + 1) + min
+
+// rounding
+// console.log(Math.trunc(24.9));
+// console.log(Math.round(24.5));
+
+// console.log(Math.floor(24.9));
+console.log(+(2.456789).toFixed(0));
+
+const isEven = n => n % 2 === 0
+console.log(isEven(91231));
+
+// displaying even movements when the user click on the balance 
+labelBalance.addEventListener("click", function () {
+  [...document.querySelectorAll(".movements__row")].forEach((row, i) => {
+    if (i % 2 === 0) row.style.backgroundColor = "#F6FB7A"
+    if(i % 3 === 0) row.style.backgroundColor = "#73BBA3"
+  })
+})
+
