@@ -142,6 +142,7 @@ const displayMovments = function (movements, sort = false) {
 // event handler
 let currentAccount;
 
+
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
   currentAccount = accounts.find(acc => acc.username === (inputLoginUsername.value).toLowerCase());
@@ -364,11 +365,37 @@ labelBalance.addEventListener("click", function () {
 })
 
 
-console.log(2 ** 53 - 1);
-console.log(Number.MAX_SAFE_INTEGER);
-console.log(1231354654513165635146532213n);
+// console.log(2 ** 53 - 1);
+// console.log(Number.MAX_SAFE_INTEGER);
+// console.log(1231354654513165635146532213n);
 
 
-const big = 5665451685451351684n
-const reg = 12354
-console.log(big + BigInt(reg));
+// const big = 5665451685451351684n
+// const reg = 12354
+// console.log(big + BigInt(reg));
+
+const future = new Date(2037, 10, 19, 18, 41);
+// console.log(future);
+// console.log(future.getFullYear());
+// console.log(future.getMonth());
+// console.log(future.getDay());
+// console.log(future.getDate());
+// console.log(future.toISOString());
+// console.log(future.getTime());
+// console.log(new Date(2142286860000));
+
+
+
+// ********************fake logged in
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+const now = new Date();
+const currentday = `${now.getDate()}`.padStart(2, 0);
+const currentmonth = `${now.getMonth() + 1}`.padStart(2, 0);
+const currentyear = now.getFullYear();
+const currenthours = now.getHours();
+const currentminutes = now.getMinutes();
+labelDate.textContent = `${currentmonth}/${currentday}/${currentyear}, ${currenthours}:${currentminutes}`;
+
+// month/day/year
