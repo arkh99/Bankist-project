@@ -332,5 +332,11 @@ labelBalance.addEventListener("click", function () {
 })
 // lectures
 
-console.log(Number.isNaN(+"alireza"));
-console.log(Number.isNaN(+"1234"));
+
+// console.log(Number.isFinite(20));
+// console.log(Number.isFinite(2.14));
+// console.log(Number.isInteger(2.14));
+
+// math operations
+
+console.log(Math.sqrt(37));
