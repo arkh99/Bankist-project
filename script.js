@@ -350,10 +350,10 @@ const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + 1) + mi
 // console.log(Math.round(24.5));
 
 // console.log(Math.floor(24.9));
-console.log(+(2.456789).toFixed(0));
+// console.log(+(2.456789).toFixed(0));
 
 const isEven = n => n % 2 === 0
-console.log(isEven(91231));
+// console.log(isEven(91231));
 
 // displaying even movements when the user click on the balance 
 labelBalance.addEventListener("click", function () {
@@ -363,3 +363,12 @@ labelBalance.addEventListener("click", function () {
   })
 })
 
+
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(1231354654513165635146532213n);
+
+
+const big = 5665451685451351684n
+const reg = 12354
+console.log(big + BigInt(reg));
