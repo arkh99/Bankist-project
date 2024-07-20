@@ -123,13 +123,13 @@ const updateUI = function (currentAccount) {
 }
 
 const formatMovementDate = function (date) {
-  const daysPassed = (date1, date2) => Math.floor(Math.abs(date2 - date1) / 86400000);
+  const daysPassed = (date2, date1) => Math.floor(Math.abs(date2 - date1) / 86400000);
 
   const amountDaysPassed = Math.floor(daysPassed(new Date(), date))
 
   if (amountDaysPassed === 0) return "Today"
   if (amountDaysPassed === 1) return "Yesterday"
-  if (amountDaysPassed <= 7) return `${daysPassed} Days ago`
+  if (amountDaysPassed <= 7) return `${amountDaysPassed} Days ago`
   else {
     const currentday = `${date.getDate()}`.padStart(2, 0);
   const currentmonth = `${date.getMonth() + 1}`.padStart(2, 0);
@@ -223,7 +223,6 @@ btnLoan.addEventListener("click", function (e) {
     console.log("eligible");
     currentAccount.movements.push(amount);
     currentAccount.movementsDates.push(now.toDateString());
-    console.log(currentAccount.movementsDates);
     updateUI(currentAccount);
   }
   inputLoanAmount.value = "";
@@ -404,23 +403,7 @@ labelBalance.addEventListener("click", function () {
 })
 
 
-// console.log(2 ** 53 - 1);
-// console.log(Number.MAX_SAFE_INTEGER);
-// console.log(1231354654513165635146532213n);
 
-
-// const big = 5665451685451351684n
-// const reg = 12354
-// console.log(big + BigInt(reg));
-
-// console.log(future);
-// console.log(future.getFullYear());
-// console.log(future.getMonth());
-// console.log(future.getDay());
-// console.log(future.getDate());
-// console.log(future.toISOString());
-// console.log(future.getTime());
-// console.log(new Date(2142286860000));
 
 const future = new Date(2037, 10, 19);
 const future1 = new Date(2037, 9, 21);
@@ -428,4 +411,3 @@ const future1 = new Date(2037, 9, 21);
 
 const daysPassed = (date1, date2) => Math.floor(Math.abs(date2 - date1) / 86400000)
 
-console.log(daysPassed(future, future1));
