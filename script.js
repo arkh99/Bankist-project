@@ -18,8 +18,8 @@ const account1 = {
     '2020-04-01T10:17:24.185Z',
     '2020-05-08T14:11:59.604Z',
     '2020-05-27T17:01:17.194Z',
-    '2020-07-11T23:36:17.929Z',
-    '2020-07-12T10:51:36.790Z',
+    '2024-07-17T23:36:17.929Z',
+    '2024-07-19T10:51:36.790Z',
   ],
 
   currency: 'EUR',
@@ -39,8 +39,8 @@ const account2 = {
     '2020-01-25T14:18:46.235Z',
     '2020-02-05T16:33:06.386Z',
     '2020-04-10T14:43:26.374Z',
-    '2020-06-25T18:49:59.371Z',
-    '2020-07-26T12:01:20.894Z',
+    '2024-07-17T23:36:17.929Z',
+    '2024-07-19T10:51:36.790Z',
   ],
   currency: 'USD',
   locale: 'en-US',
@@ -59,8 +59,8 @@ const account3 = {
     '2020-01-25T14:18:46.235Z',
     '2020-02-05T16:33:06.386Z',
     '2020-04-10T14:43:26.374Z',
-    '2020-06-25T18:49:59.371Z',
-    '2020-07-26T12:01:20.894Z',
+    '2024-07-17T23:36:17.929Z',
+    '2024-07-19T10:51:36.790Z',
   ],
   currency: 'USD',
   locale: 'en-US',
@@ -79,8 +79,8 @@ const account4 = {
     '2020-01-25T14:18:46.235Z',
     '2020-02-05T16:33:06.386Z',
     '2020-04-10T14:43:26.374Z',
-    '2020-06-25T18:49:59.371Z',
-    '2020-07-26T12:01:20.894Z',
+    '2024-07-17T23:36:17.929Z',
+    '2024-07-19T10:51:36.790Z',
   ],
   currency: 'USD',
   locale: 'en-US',
@@ -122,6 +122,24 @@ const updateUI = function (currentAccount) {
   calcdisplaysummery(currentAccount)
 }
 
+const formatMovementDate = function (date) {
+  const daysPassed = (date1, date2) => Math.floor(Math.abs(date2 - date1) / 86400000);
+
+  const amountDaysPassed = Math.floor(daysPassed(new Date(), date))
+
+  if (amountDaysPassed === 0) return "Today"
+  if (amountDaysPassed === 1) return "Yesterday"
+  if (amountDaysPassed <= 7) return `${daysPassed} Days ago`
+  else {
+    const currentday = `${date.getDate()}`.padStart(2, 0);
+  const currentmonth = `${date.getMonth() + 1}`.padStart(2, 0);
+  const currentyear = date.getFullYear();
+
+  return `${currentmonth}/${currentday}/${currentyear}`;
+  }
+}
+
+
 const displayMovments = function (acc, sort = false) {
   containerMovements.innerHTML = ""
   const movs = sort ? acc.movements.slice().sort((a,b) => a - b) : acc.movements
@@ -129,12 +147,7 @@ const displayMovments = function (acc, sort = false) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
     const date = new Date(acc.movementsDates[index])
-    const currentday = `${date.getDate()}`.padStart(2, 0);
-    const currentmonth = `${date.getMonth() + 1}`.padStart(2, 0);
-    const currentyear = date.getFullYear();
-
-    const displayDate = `${currentmonth}/${currentday}/${currentyear}`;
-
+    const displayDate = formatMovementDate(date)
 
     const html = `
     <div class="movements__row">
@@ -400,7 +413,6 @@ labelBalance.addEventListener("click", function () {
 // const reg = 12354
 // console.log(big + BigInt(reg));
 
-const future = new Date(2037, 10, 19, 18, 41);
 // console.log(future);
 // console.log(future.getFullYear());
 // console.log(future.getMonth());
@@ -410,9 +422,10 @@ const future = new Date(2037, 10, 19, 18, 41);
 // console.log(future.getTime());
 // console.log(new Date(2142286860000));
 
+const future = new Date(2037, 10, 19);
+const future1 = new Date(2037, 9, 21);
 
 
-// ********************fake logged in
+const daysPassed = (date1, date2) => Math.floor(Math.abs(date2 - date1) / 86400000)
 
-
-// month/day/year
+console.log(daysPassed(future, future1));
