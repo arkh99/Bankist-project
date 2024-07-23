@@ -166,8 +166,8 @@ const displayMovments = function (acc, sort = false) {
 let currentAccount;
 
 
-// current time 
-const now = new Date();
+
+
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
   currentAccount = accounts.find(acc => acc.username === (inputLoginUsername.value).toLowerCase());
@@ -178,14 +178,17 @@ btnLogin.addEventListener('click', function (e) {
     mainWelcome.style.opacity = 0;
     containerApp.style.opacity = 100;
 
-    // create current date
-    const currentday = `${now.getDate()}`.padStart(2, 0);
-    const currentmonth = `${now.getMonth() + 1}`.padStart(2, 0);
-    const currentyear = now.getFullYear();
-    const currenthours = now.getHours();
-    const currentminutes = now.getMinutes();
-    labelDate.textContent = `${currentmonth}/${currentday}/${currentyear}, ${currenthours}:${currentminutes}`;
-    console.log(currentAccount.movementsDates);
+    // current date 
+    const now = new Date();
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    }
+    const locale = navigator.language;
+    labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now)
 
     // clear input fields
     inputLoginUsername.value = "";
