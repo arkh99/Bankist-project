@@ -22,6 +22,8 @@ The application includes a feature to sort account movements (transactions) eith
 
 6. Updating UI
 After every transaction, whether it's a transfer, loan, or account closure, the user interface is updated to reflect the latest account data. This includes displaying recent transactions, updating the current balance, and summarizing the account's financial activity.
+7. Implementing Time obejcts
+The web site has timer for 5 mins so that if the user doesnt do any transaction they will get logged out also I implemented real time clock for the website that gets refreshed each second to show the real time  
 
 Technical Details
 This project demonstrates a high level of knowledge in HTML, CSS, and vanilla JavaScript. It includes the use of complicated array and object methods, as well as DOM manipulation techniques to create a responsive and interactive banking application. Key JavaScript functionalities showcased in this project include:
