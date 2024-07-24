@@ -253,6 +253,8 @@ btnTransfer.addEventListener("click", function (e) {
 })
 
 
+
+
 btnLoan.addEventListener("click", function (e) {
   e.preventDefault();
   const amount = Math.floor(inputLoanAmount.value)
