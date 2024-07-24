@@ -162,8 +162,33 @@ const displayMovments = function (acc, sort = false) {
   })
 }
 
+// logout timer 
+const startLogOutTimer = function () {
+  let time = 300; // 100 seconds 
+  const tick = () => {
+    const min = String(Math.trunc(time / 60)).padStart(2, "0");
+    const sec = String(time % 60).padStart(2, "0");
+
+
+    labelTimer.textContent = `${min}:${sec}`;
+    // decrease 1 sec
+    
+    if (time === 0) {
+      clearInterval(timer)
+      mainWelcome.style.opacity = 1000;
+      containerApp.style.opacity = 0;
+      labelWelcome.textContent = "Log in to get started"
+    }
+    time--;
+  }
+  tick() 
+  timer = setInterval(tick, 1000);
+  return timer;
+};
+
+
 // event handler
-let currentAccount;
+let currentAccount, timer;
 const now = new Date();
 
 
@@ -201,7 +226,8 @@ btnLogin.addEventListener('click', function (e) {
 
     // losing focus on pin field after login
     inputLoginPin.blur();
-    
+    if( timer ) clearInterval(timer)
+    timer = startLogOutTimer();
     updateUI(currentAccount)
   }
   
@@ -219,6 +245,10 @@ btnTransfer.addEventListener("click", function (e) {
     currentAccount.movementsDates.push(now.toDateString());
     receiverAcc.movementsDates.push(now.toDateString())
     updateUI(currentAccount)
+
+    // reset the timer 
+    clearInterval(timer);
+    timer = startLogOutTimer()
   }
 })
 
@@ -236,6 +266,9 @@ btnLoan.addEventListener("click", function (e) {
     }, 4000)
   }
   inputLoanAmount.value = "";
+  // reset the timer 
+  clearInterval(timer);
+  timer = startLogOutTimer()
 })
 
 btnClose.addEventListener("click", function (e) {
@@ -415,21 +448,5 @@ labelBalance.addEventListener("click", function () {
 
 
 
-const future = new Date(2037, 10, 19);
-const future1 = new Date(2037, 9, 21);
 
 
-const daysPassed = (date1, date2) => Math.floor(Math.abs(date2 - date1) / 86400000)
-
-// settimeout
-const ingrs = ["sausage", "cheese"]
-const timer = setTimeout((ing1, ing2) => console.log(`here is your pizza with ${ing1} and ${ing2}`), 3000, );
-if (ingrs.includes("cheese")) clearTimeout(timer)
-
-
-// setinterval
-
-setInterval(() => {
-  const now = new Date();
-  console.log(now);
-}, 1000)
