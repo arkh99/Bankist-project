@@ -164,6 +164,7 @@ const displayMovments = function (acc, sort = false) {
 
 // event handler
 let currentAccount;
+const now = new Date();
 
 
 
@@ -179,16 +180,20 @@ btnLogin.addEventListener('click', function (e) {
     containerApp.style.opacity = 100;
 
     // current date 
-    const now = new Date();
-    const options = {
-      hour: 'numeric',
-      minute: 'numeric',
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric'
-    }
-    const locale = navigator.language;
-    labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now)
+    
+
+    setInterval(() => {
+      const now = new Date();
+      const options = {
+        hour: 'numeric',
+        minute: 'numeric',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      }
+      const locale = navigator.language;
+      labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now)
+    }, 1000)
 
     // clear input fields
     inputLoginUsername.value = "";
@@ -223,10 +228,12 @@ btnLoan.addEventListener("click", function (e) {
   const amount = Math.floor(inputLoanAmount.value)
   const eligible = currentAccount.movements.some(value => value > 0 && value >= (amount * 0.1));
   if (eligible) {
-    console.log("eligible");
-    currentAccount.movements.push(amount);
-    currentAccount.movementsDates.push(now.toDateString());
-    updateUI(currentAccount);
+    setTimeout(function() {
+      console.log("eligible");
+      currentAccount.movements.push(amount);
+      currentAccount.movementsDates.push(now.toDateString());
+      updateUI(currentAccount);
+    }, 4000)
   }
   inputLoanAmount.value = "";
 })
@@ -414,3 +421,15 @@ const future1 = new Date(2037, 9, 21);
 
 const daysPassed = (date1, date2) => Math.floor(Math.abs(date2 - date1) / 86400000)
 
+// settimeout
+const ingrs = ["sausage", "cheese"]
+const timer = setTimeout((ing1, ing2) => console.log(`here is your pizza with ${ing1} and ${ing2}`), 3000, );
+if (ingrs.includes("cheese")) clearTimeout(timer)
+
+
+// setinterval
+
+setInterval(() => {
+  const now = new Date();
+  console.log(now);
+}, 1000)
